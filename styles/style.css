@@ -761,6 +761,46 @@ h3.my-profession
     width: 100%;
     display: block;
 } */
+@media (max-width: 768px) {
+    .aside {
+      position: fixed;
+      left: -250px;
+      width: 200px;
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
+  
+    .aside.active {
+      left: 0;
+    }
+  
+    .nav-toggler {
+      display: block;
+      cursor: pointer;
+      margin: 1rem;
+    }
+  
+    .main-content {
+      margin-left: 0;
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 15px;
+    }
+  
+    .typing {
+      font-size: 1.2rem;
+      white-space: normal;
+    }
+  }
+  input, textarea, button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+    
 .contact-title
 {
     color: var(--skin-color);
@@ -922,4 +962,8 @@ h3.my-profession
         flex: 0 0 100%;
         max-width: 100%;
     }
+}
+#form-message {
+    margin-top: 15px;
+    font-weight: bold;
 }
