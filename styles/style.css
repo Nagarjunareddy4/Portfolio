@@ -17,6 +17,12 @@ body.dark
 }
 body
 {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+body
+{
     
     line-height: 1.5;
     font-size: 16px;
@@ -160,6 +166,90 @@ ul
 {
     box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
 }
+/* Sidebar styles */
+.aside {
+    position: fixed;
+    left: -250px; /* Hidden by default */
+    width: 200px;
+    height: 100%;
+    background: var(--bg-black-100);
+    z-index: 1000;
+    transition: left 0.3s ease;
+}
+
+.aside.active {
+    left: 0; /* Show sidebar when active */
+}
+
+/* Navigation toggle button */
+.nav-toggler {
+    display: flex;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    background: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-toggler span {
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: relative;
+}
+
+.nav-toggler span::before,
+.nav-toggler span::after {
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: absolute;
+    left: 0;
+}
+
+.nav-toggler span::before {
+    top: -6px;
+}
+
+.nav-toggler span::after {
+    top: 6px;
+}
+
+.nav-toggler.open span {
+    background: transparent;
+}
+
+.nav-toggler.open span::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.nav-toggler.open span::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* Home image styles */
+.home .home-img {
+    display: block;
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+.home .home-img img {
+    width: 80%;
+    height: auto;
+    margin: auto;
+    border-radius: 5px;
+}
 .aside
 {
     width: 270px;
@@ -280,6 +370,15 @@ ul
 .aside .nav
 {
     margin-top: 50px;
+}
+.aside .nav li
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
 }
 .aside .nav li
 {
@@ -890,7 +989,89 @@ h3.my-profession
     height: 140px;
     padding: 0 50px;
 }
+@media (max-width: 768px) {
+    .aside {
+        position: fixed;
+        left: -250px; /* Hide the sidebar initially */
+        width: 200px;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        background: var(--bg-black-100); /* Ensure background is visible */
+    }
 
+    .aside.active {
+        left: 0; /* Show the sidebar when active */
+    }
+
+    .nav-toggler {
+        display: flex; /* Ensure the toggle button is visible */
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1100;
+        background: var(--bg-black-100);
+        border: 1px solid var(--bg-black-50);
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-toggler span {
+        height: 2px;
+        width: 18px;
+        background: var(--skin-color);
+        position: relative;
+    }
+
+    .nav-toggler span::before,
+    .nav-toggler span::after {
+        content: '';
+        height: 2px;
+        width: 18px;
+        background: var(--skin-color);
+        position: absolute;
+        left: 0;
+    }
+
+    .nav-toggler span::before {
+        top: -6px;
+    }
+
+    .nav-toggler span::after {
+        top: 6px;
+    }
+
+    .nav-toggler.open span {
+        background: transparent;
+    }
+
+    .nav-toggler.open span::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .nav-toggler.open span::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+}
+@media (max-width: 768px) {
+    .home .home-img {
+        display: block; /* Ensure the image is visible */
+        flex: 0 0 100%; /* Take full width */
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .home .home-img img {
+        width: 80%; /* Adjust the size for mobile */
+        height: auto;
+        margin: auto;
+        border-radius: 5px;
+    }
+}
 @media(max-width:1199px)
 {
     .section .container
@@ -905,9 +1086,16 @@ h3.my-profession
     {
         left: 0%;
     }
+    .aside .nav li
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
     .aside .nav-toggler
     {
         display: flex;
+        justify-content: center;
         left: 30px;
     }
     .aside .nav-toggler.open
@@ -928,6 +1116,78 @@ h3.my-profession
         margin-left: 0;
     }
 }
+@media (max-width: 768px) {
+    .aside {
+        position: fixed;
+        left: -250px;
+        width: 200px;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    .aside.active {
+        left: 0;
+    }
+
+    .nav-toggler {
+        display: block;
+        cursor: pointer;
+        margin: 1rem;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+}
+@media (max-width: 576px) {
+    .section {
+        padding: 15px;
+    }
+
+    .home .home-info,
+    .home .home-img {
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .home .home-img img {
+        width: 80%;
+        height: auto;
+    }
+
+    .contact .contact-info-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .service .service-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 576px) {
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact .contact-form .form-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    input, textarea {
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+}
+
 @media (max-width:991px)
 {
     .contact .contact-info-item
@@ -967,3 +1227,33 @@ h3.my-profession
     margin-top: 15px;
     font-weight: bold;
 }
+
+/* Contact form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  input, textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+  }
+  
+  textarea {
+    min-height: 120px;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .typing {
+      font-size: 1.2rem;
+    }
+  
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
