@@ -35,6 +35,7 @@ Cloudflare / Vercel / GitHub Pages (deployment ready)
 
 📂 Project Structure
 ---
+```bash
 portfolio/
 │
 ├── index.html                # Main application entry
@@ -46,6 +47,7 @@ portfolio/
 │
 ├── README.md                  # Project documentation
 └── .gitignore
+```
 
 🧭 Sections Included
 ---
