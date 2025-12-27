@@ -380,7 +380,8 @@
           </div><!-- Collapse Button -->
           <div class="sidebar-item rounded-lg" id="collapseBtn" title="Collapse Menu">
             <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+              <path id="collapseIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 5l7 7-7 7M5 5l7 7-7 7" />
             </svg><span class="sidebar-text font-semibold">Collapse</span>
           </div>
         </div>
@@ -523,12 +524,15 @@
     // Menu toggle functionality
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
+      const iconPath = document.querySelector('#collapseBtn svg path');
       sidebarExpanded = !sidebarExpanded;
 
       if (sidebarExpanded) {
         sidebar.classList.add('expanded');
+        iconPath.setAttribute('d', 'M11 19l-7-7 7-7m8 14l-7-7 7-7');
       } else {
         sidebar.classList.remove('expanded');
+        iconPath.setAttribute('d', 'M13 5l7 7-7 7M5 5l7 7-7 7');
       }
     }
 
