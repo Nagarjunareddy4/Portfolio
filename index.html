@@ -798,7 +798,7 @@ footer span{color:var(--ac);}
       <div class="con-form st" style="transition-delay:.1s">
         <h3 style="font-family:'Cabinet Grotesk',sans-serif;font-size:18px;font-weight:800;margin-bottom:4px;">Send a Message</h3>
         <p style="color:var(--mu);font-size:13px;margin-bottom:8px;">I typically reply within 24 hours ✉️</p>
-        <form id="cfrm" action="https://formsubmit.co/nagarjunareddy9995@gmail.com" method="POST">
+        <form id="cfrm">
           <input type="hidden" name="_captcha" value="false"/>
           <input type="hidden" name="_subject" value="New Portfolio Contact"/>
           <div><label class="fl">Your Name</label><input class="fi" type="text" name="name" placeholder="John Doe" required/></div>
@@ -813,7 +813,7 @@ footer span{color:var(--ac);}
   </section>
 
   <footer>
-    <p>© 2026 <span>Nagarjuna Reddy Annapureddy</span> · Crafted with ❤️ &amp; ☁️ · <span>HCL Technologies</span></p>
+    <p>© 2026 <span>Nagarjuna Reddy Annapureddy</span> · <span>All rights reserved.</span></p>
   </footer>
 </div>
 
@@ -950,7 +950,18 @@ cfrm.addEventListener('submit', async e => {
   btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
   btn.disabled = true;
   try {
-    const res = await fetch(cfrm.action, { method: 'POST', body: new FormData(cfrm), headers: { 'Accept': 'application/json' } });
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: cfrm.name.value,
+        email: cfrm.email.value,
+        subject: cfrm.subject.value,
+        message: cfrm.message.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
     if (res.ok) {
       fmsg.className = 'fmsg fok'; fmsg.style.display = 'block';
       fmsg.textContent = '✓ Message sent! I\'ll get back to you soon.';
